@@ -1,6 +1,7 @@
 from stats import get_word_count
 from stats import get_character_count
 from stats import sort_characters
+import sys
 
 # Function to get the contents of a book and return it as a string
 def get_book_text(filepath):
@@ -26,7 +27,12 @@ def print_report(filepath, word_count, char_count):
 
 def main():
 
-    filepath = "books/frankenstein.txt"
+    if len(sys.argv) == 1:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:
+        filepath = sys.argv[1]
+    
     book = get_book_text(filepath)
     word_count = get_word_count(book)
     char_count = get_character_count(book)
